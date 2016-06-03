@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="Xbefiring"
+  id="myeclipse.1464932866881"
+  context-root="/Xbefiring"
+  j2ee-spec="5.0"
+  archive="Xbefiring.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+
