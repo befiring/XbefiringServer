@@ -11,6 +11,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.befiring.bean.User;
+import com.befiring.db.DBHelper;
+import com.befiring.db.Dao;
+import com.google.gson.Gson;
+
 public class UserServlet extends HttpServlet {
 
 	/**
@@ -44,11 +49,16 @@ public class UserServlet extends HttpServlet {
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
 		String content=request.getParameter("param");
+		Gson gson=new Gson();
+		User user=gson.fromJson(content, User.class);
+//		DBHelper.insert(user);
+		Dao dao=new Dao();
+		dao.executeUpdate(user);
 		File f=new File("D:\\content.txt");
 		FileOutputStream fos=new FileOutputStream(f);
 		fos.write(content.getBytes("utf-8"));
 		fos.close();
-		out.print("OK");
+		out.print("data from server: "+user.getName());
 //		out
 //				.println("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\">");
 //		out.println("<HTML>");
