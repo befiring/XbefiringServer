@@ -52,11 +52,11 @@ public class Dao {
 	
 	public static int executeUpdate(User user) {        //更新方法
 		 
-		 String sql = "INSERT INTO user(name,age)" + "VALUES(?,?)";
+		 String sql = "INSERT INTO user(name,password)" + "VALUES(?,?)";
 	        try {
 	        	pstmt = conn.prepareStatement(sql);
 	        	pstmt.setString(1, user.getName());
-				pstmt.setInt(2, user.getAge());
+				pstmt.setString(2, user.getPassword());
 	            if(conn==null)  new Dao();    //如果连接对象为空，则重新调用构造方法
 	            return pstmt.executeUpdate();//执行更新
 	        } catch (SQLException e) {
@@ -65,6 +65,22 @@ public class Dao {
 	        } finally {
 	        }
 	    }
+	
+	public static boolean executeQuery(User user){
+		String sql="SELECT * FROM user WHERE name LIKE? AND password LIKE ?";
+		ResultSet rs=null;
+		try{
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, user.getName());
+			pstmt.setString(2, user.getPassword());
+			if(conn==null)  new Dao();
+			rs=pstmt.executeQuery();
+		
+		}catch(SQLException e){
+			e.printStackTrace();
+		}
+		return rs==null;
+	}
 	 
 	 public static void close() {//关闭方法
 	        try {

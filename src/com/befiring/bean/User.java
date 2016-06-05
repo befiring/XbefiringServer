@@ -12,8 +12,7 @@ public class User implements Serializable{
 	 * 
 	 */
 	public String name;
-    public int age;
-    public int sex;
+    public String password;
 
     public User() {
     }
@@ -26,21 +25,15 @@ public class User implements Serializable{
         this.name = name;
     }
 
-    public int getAge() {
-        return age;
-    }
+	public String getPassword() {
+		return password;
+	}
 
-    public void setAge(int age) {
-        this.age = age;
-    }
+	public void setPassword(String password) {
+		this.password = password;
+	}
 
-    public int getSex() {
-        return sex;
-    }
-
-    public void setSex(int sex) {
-        this.sex = sex;
-    }
+  
 
 
 }
