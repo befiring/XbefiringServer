@@ -23,7 +23,8 @@ public class Dao {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 //		System.out.println(getConnection());
-
+		new Dao();
+        executeQuery(new User("wm","123"));
 	}
 	public Dao() {                                        //默认构造函数
         try {
@@ -67,19 +68,26 @@ public class Dao {
 	    }
 	
 	public static boolean executeQuery(User user){
-		String sql="SELECT * FROM user WHERE name LIKE? AND password LIKE ?";
+		String sql="SELECT * FROM user WHERE name=? AND password=?";
 		ResultSet rs=null;
+		boolean b=false;
 		try{
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, user.getName());
 			pstmt.setString(2, user.getPassword());
 			if(conn==null)  new Dao();
 			rs=pstmt.executeQuery();
+			while(rs.next()){
+				System.out.println(rs.getString("name"));
+				System.out.println(rs.getString("password"));
+				b=true;
+			}
 		
 		}catch(SQLException e){
 			e.printStackTrace();
 		}
-		return rs==null;
+		System.out.println(rs!=null);
+		return b;
 	}
 	 
 	 public static void close() {//关闭方法

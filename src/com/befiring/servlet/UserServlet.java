@@ -51,7 +51,6 @@ public class UserServlet extends HttpServlet {
 		String content=request.getParameter("param");
 		Gson gson=new Gson();
 		User user=gson.fromJson(content, User.class);
-//		DBHelper.insert(user);
 		Dao dao=new Dao();
 		dao.executeUpdate(user);
 		File f=new File("D:\\content.txt");
@@ -59,18 +58,7 @@ public class UserServlet extends HttpServlet {
 		fos.write(content.getBytes("utf-8"));
 		fos.close();
 		out.print("data from server: "+user.getName());
-//		out
-//				.println("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\">");
-//		out.println("<HTML>");
-//		out.println("  <HEAD><TITLE>A Servlet</TITLE></HEAD>");
-//		out.println("  <BODY>");
-//		out.print("    This is ");
-//		out.print(this.getClass());
-//		out.println(", using the GET method");
-//		out.println("  </BODY>");
-//		out.println("</HTML>");
-//		out.flush();
-//		out.close();
+
 	}
 
 	/**
@@ -86,20 +74,7 @@ public class UserServlet extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-//		response.setContentType("text/html");
-//		PrintWriter out = response.getWriter();
-//		out
-//				.println("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\">");
-//		out.println("<HTML>");
-//		out.println("  <HEAD><TITLE>A Servlet</TITLE></HEAD>");
-//		out.println("  <BODY>");
-//		out.print("    This is ");
-//		out.print(this.getClass());
-//		out.println(", using the POST method");
-//		out.println("  </BODY>");
-//		out.println("</HTML>");
-//		out.flush();
-//		out.close();
+
 		doGet(request, response);
 	}
 
