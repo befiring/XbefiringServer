@@ -16,12 +16,12 @@ import com.befiring.db.DBHelper;
 import com.befiring.db.Dao;
 import com.google.gson.Gson;
 
-public class UserServlet extends HttpServlet {
+public class RegisterServlet extends HttpServlet {
 
 	/**
 	 * Constructor of the object.
 	 */
-	public UserServlet() {
+	public RegisterServlet() {
 		super();
 	}
 

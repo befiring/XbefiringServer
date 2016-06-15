@@ -70,24 +70,22 @@ public class Dao {
 	public static boolean executeQuery(User user){
 		String sql="SELECT * FROM user WHERE name=? AND password=?";
 		ResultSet rs=null;
-		boolean b=false;
 		try{
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, user.getName());
 			pstmt.setString(2, user.getPassword());
 			if(conn==null)  new Dao();
 			rs=pstmt.executeQuery();
-			while(rs.next()){
-				System.out.println(rs.getString("name"));
-				System.out.println(rs.getString("password"));
-				b=true;
+			if(rs.next()){
+				return true;
 			}
 		
 		}catch(SQLException e){
 			e.printStackTrace();
+			
 		}
 		System.out.println(rs!=null);
-		return b;
+		return false;
 	}
 	 
 	 public static void close() {//¹Ø±Õ·½·¨
